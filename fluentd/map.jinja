@@ -15,5 +15,6 @@
   },
 }, merge=salt['pillar.get']('fluentd:agent')) %}
 
+{%- do salt.log.error(pillar.get('fluentd')) -%}
 {# Deep-merge the service configuration with the pillar data #}
 {%- do salt['defaults.merge'](fluentd_agent, pillar.get('fluentd', {})) %}
