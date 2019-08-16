@@ -99,7 +99,6 @@ fluentd_grok_pattern_agent:
 
 {%- set fluentd_config = fluentd_agent.get('config', {}) %}
 {%- for name,values in fluentd_config.get('input', {}).iteritems() %}
-{%- if values is not mapping or values.get('enabled', True) %}
 input_{{ name }}_agent:
   file.managed:
     - name: {{ fluentd_agent.dir.config }}/config.d/input-{{ name }}.conf
@@ -118,11 +117,7 @@ input_{{ name }}_agent:
       - service: fluentd_service_agent
     - defaults:
         name: {{ name }}
-  {%- if values is mapping %}
         values: {{ values | yaml }}
-  {%- else %}
-        values: {}
-  {%- endif %}
 {%- endif %}
 
 {%- endfor %}
