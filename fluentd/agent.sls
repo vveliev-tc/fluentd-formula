@@ -9,7 +9,7 @@ fluentd_apt_repository:
 
 loggly_gem:
   cmd.run:
-    - name: gem install fluent-plugin-loggly
+    - name: td-agent-gem install fluent-plugin-loggly
 
 fluentd_packages_agent:
   pkg.installed:
