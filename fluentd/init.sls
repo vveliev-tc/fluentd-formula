@@ -1,5 +1,5 @@
+{%- do salt.log.info('testing jinja logging') -%}
 {%- if pillar.fluentd %}
-{%- do salt.log.error('testing jinja logging') -%}
 include:
   {%- if pillar.fluentd is defined %}
   - fluentd.agent
