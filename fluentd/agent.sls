@@ -118,7 +118,6 @@ input_{{ name }}_agent:
     - defaults:
         name: {{ name }}
         values: {{ values | yaml }}
-{%- endif %}
 
 {%- endfor %}
 
