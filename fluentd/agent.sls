@@ -1,4 +1,5 @@
 {% from "fluentd/map.jinja" import fluentd_agent with context %}
+{%- do salt.log.error('testing jinja logging') -%}
 {%- if fluentd_agent.get('enabled', False) %}
 
 fluentd_packages_agent:
