@@ -28,5 +28,8 @@
   {%- endif %}
 {%- endfor %}
 
+{%- do salt.log.error(fluentd_agent) -%}
+{%- do salt.log.error(fluentd_grains) -%}
+
 {# Deep-merge the service configuration with the pillar data #}
 {%- do salt['defaults.merge'](fluentd_agent, fluentd_grains.get('agent', {})) %}
