@@ -2,6 +2,11 @@
 {%- do salt.log.error(fluentd_agent) -%}
 {%- if fluentd_agent.get('enabled', False) %}
 
+fluentd_apt_repository:
+  cmd.run:
+    - name: curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.sh | sh
+    - unless: test -e /etc/apt/sources.list.d/treasure-data.list
+
 fluentd_packages_agent:
   pkg.installed:
     - names: {{ fluentd_agent.pkgs }}
