@@ -7,6 +7,10 @@ fluentd_apt_repository:
     - name: curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.sh | sh
     - unless: test -e /etc/apt/sources.list.d/treasure-data.list
 
+loggly_gem:
+  cmd.run:
+    - name: gem install fluent-plugin-loggly
+
 fluentd_packages_agent:
   pkg.installed:
     - names: {{ fluentd_agent.pkgs }}
