@@ -4,7 +4,7 @@
 fluentd_apt_repository:
   cmd.run:
     - name: curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.sh | sh
-    - unless: test -e /etc/apt/sources.list.d/treasure-data.list
+    - unless: dpkg-query -W -f='${Status}' td-agent 2>/dev/null | grep "ok installed"
 
 loggly_gem:
   cmd.run:
