@@ -9,6 +9,7 @@ fluentd_apt_repository:
 loggly_gem:
   cmd.run:
     - name: td-agent-gem install fluent-plugin-loggly
+    - unless: td-agent-gem list -i '^fluent-plugin-loggly$'
 
 fluentd_packages_agent:
   pkg.installed:
